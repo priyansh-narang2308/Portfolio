@@ -20,9 +20,9 @@ const ContactSection = async () => {
 
   return (
     <section id="contact" className="py-20 px-6 pb-40 bg-muted/30">
- <div className="w-full flex justify-center mb-16">
-    <Globe className="w-[500px] h-[500px]" />
-  </div>
+      <div className="w-full flex justify-center mb-16">
+        <Globe className="w-[500px] h-[500px]" />
+      </div>
 
 
       <div className="container mx-auto max-w-4xl">
@@ -94,55 +94,51 @@ const ContactSection = async () => {
                   </div>
                 </div>
               )}
-              {profile.socialLinks && (
-                <div className="pt-6">
-                  <h4 className="font-semibold mb-4 text-sm @md/info:text-base">
-                    Follow Me
-                  </h4>
-                  <div className="flex flex-wrap gap-2 @md/info:gap-3">
-                    {profile.socialLinks.github && (
-                      <Link
-                        href={profile.socialLinks.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        GitHub
-                      </Link>
-                    )}
-                    {profile.socialLinks.linkedin && (
-                      <Link
-                        href={profile.socialLinks.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        LinkedIn
-                      </Link>
-                    )}
-                    {profile.socialLinks.twitter && (
-                      <Link
-                        href={profile.socialLinks.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        Twitter
-                      </Link>
-                    )}
-                    {profile.socialLinks.website && (
-                      <Link
-                        href={profile.socialLinks.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        Website
-                      </Link>
-                    )}
-                  </div>
+              <div className="pt-6">
+                <h4 className="font-semibold mb-4 text-sm @md/info:text-base">
+                  Follow Me
+                </h4>
+                <div className="flex flex-wrap gap-2 @md/info:gap-3">
+                  {profile.socialLinks?.github && (
+                    <Link
+                      href={profile.socialLinks.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
+                    >
+                      GitHub
+                    </Link>
+                  )}
+                  {profile.socialLinks?.linkedin && (
+                    <Link
+                      href={profile.socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
+                    >
+                      LinkedIn
+                    </Link>
+                  )}
+                  {profile.socialLinks?.twitter && (
+                    <Link
+                      href={profile.socialLinks.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
+                    >
+                      Twitter
+                    </Link>
+                  )}
+                  <Link
+                    href="/CB.SC.U4CSE23642.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm bg-primary text-primary-foreground hover:bg-primary/90 text-center"
+                  >
+                    Resume
+                  </Link>
                 </div>
-              )}
+              </div>
             </div>
 
             <ContactForm />
