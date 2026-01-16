@@ -25,7 +25,11 @@ const EDUCATION_QUERY = defineQuery(
 );
 
 const EducationSection = async () => {
-  const { data: education } = await sanityFetch({ query: EDUCATION_QUERY });
+  const { data: education } = await sanityFetch({
+    query: EDUCATION_QUERY,
+    // @ts-ignore - force refresh
+    revalidate: 0,
+  });
   if (!education || education.length === 0) {
     return null;
   }
@@ -53,11 +57,11 @@ const EducationSection = async () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {education.map((edu) => (
             <div
-             className="group relative border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 bg-transparent"
+              className="group relative border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 bg-transparent"
 
               key={`${edu.institution}-${edu.degree}-${edu.startDate}`}
             >
-            
+
 
               <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-primary/60 to-primary/30 z-10" />
 
@@ -99,8 +103,8 @@ const EducationSection = async () => {
                       {edu.current
                         ? "Present"
                         : edu.endDate
-                        ? formatDate(edu.endDate)
-                        : "N/A"}
+                          ? formatDate(edu.endDate)
+                          : "N/A"}
                     </span>
                   </div>
                   {edu.gpa && (

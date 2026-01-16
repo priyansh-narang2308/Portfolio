@@ -23,7 +23,11 @@ const EXPERIENCE_QUERY = defineQuery(`
 `);
 
 const ExperienceSection = async () => {
-  const { data: experiences } = await sanityFetch({ query: EXPERIENCE_QUERY });
+  const { data: experiences } = await sanityFetch({
+    query: EXPERIENCE_QUERY,
+    // @ts-ignore - force refresh
+    revalidate: 0,
+  });
   if (!experiences || experiences.length === 0) {
     return null;
   }
@@ -91,8 +95,8 @@ const ExperienceSection = async () => {
                         {exp.current
                           ? "Present"
                           : exp.endDate
-                          ? formatDate(exp.endDate)
-                          : "N/A"}
+                            ? formatDate(exp.endDate)
+                            : "N/A"}
                       </span>
                       {exp.location && (
                         <>
