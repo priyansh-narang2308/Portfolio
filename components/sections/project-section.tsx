@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "groq";
 import Image from "next/image";
 import Link from "next/link";
+import { SectionWrapper } from "../ui/section-wrapper";
 
 // show the first 6 projects
 const PROJECTS_QUERY =
@@ -26,7 +27,7 @@ const ProjectsSection = async () => {
 
   return (
     <section id="projects" className="py-20 px-6 bg-muted/30">
-      <div className="container mx-auto max-w-6xl">
+      <SectionWrapper className="container mx-auto max-w-6xl">
         {" "}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -37,9 +38,10 @@ const ProjectsSection = async () => {
         <div className="@container">
           {" "}
           <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <div
+            {projects.map((project, idx) => (
+              <SectionWrapper
                 key={project.slug?.current}
+                delay={idx * 0.1}
                 className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
               >
                 {project.coverImage && (
@@ -122,11 +124,11 @@ const ProjectsSection = async () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </SectionWrapper>
             ))}
           </div>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 };

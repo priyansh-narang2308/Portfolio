@@ -3,6 +3,7 @@ import { PortableText } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "groq";
 import { urlFor } from "@/sanity/lib/image";
+import { SectionWrapper } from "../ui/section-wrapper";
 
 const EXPERIENCE_QUERY = defineQuery(`
   *[_type == "experience"] | order(startDate desc) {
@@ -41,7 +42,7 @@ const ExperienceSection = async () => {
 
   return (
     <section id="experience" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
+      <SectionWrapper className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Work Experience
@@ -51,9 +52,10 @@ const ExperienceSection = async () => {
           </p>
         </div>
         <div className="space-y-8">
-          {experiences.map((exp) => (
-            <div
+          {experiences.map((exp, idx) => (
+            <SectionWrapper
               key={`${exp.company}-${exp.position}-${exp.startDate}`}
+              delay={idx * 0.1}
               className="relative pl-8 pb-8 border-l-2 border-muted last:border-l-0"
             >
               <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background" />
@@ -162,10 +164,10 @@ const ExperienceSection = async () => {
                   </div>
                 )}
               </div>
-            </div>
+            </SectionWrapper>
           ))}
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 };

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { IconAward, IconCalendar, IconExternalLink } from "@tabler/icons-react";
 import Link from "next/link";
+import { SectionWrapper } from "../ui/section-wrapper";
 import { SpotlightCard } from "../ui/spotlightcard";
 import { LampContainer } from "../ui/lamp";
 
@@ -46,7 +47,7 @@ const EducationSection = async () => {
       id="education"
       className="relative py-20 px-6 bg-muted/30 overflow-hidden"
     >
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <SectionWrapper className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Education</h2>
           <p className="text-xl text-muted-foreground">
@@ -55,14 +56,12 @@ const EducationSection = async () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {education.map((edu) => (
-            <div
-              className="group relative border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 bg-transparent"
-
+          {education.map((edu, idx) => (
+            <SectionWrapper
               key={`${edu.institution}-${edu.degree}-${edu.startDate}`}
+              delay={idx * 0.1}
+              className="group relative border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 bg-transparent"
             >
-
-
               <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-primary/60 to-primary/30 z-10" />
 
               {/* head */}
@@ -155,10 +154,10 @@ const EducationSection = async () => {
                   </Link>
                 )}
               </div>
-            </div>
+            </SectionWrapper>
           ))}
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 };

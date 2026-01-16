@@ -2,6 +2,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { defineQuery } from "groq";
 import { sanityFetch } from "@/sanity/lib/live";
 import { AnimatedTestimonials } from "../ui/animated-testimonials";
+import { SectionWrapper } from "../ui/section-wrapper";
 
 const TESTI_QUERY =
   defineQuery(`*[_type=="testimonial" && featured==true] | order(order asc){
@@ -39,21 +40,27 @@ const TestimonialSection = async () => {
 
   return (
     <section id="testimonials" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
+      <SectionWrapper className="container mx-auto max-w-6xl">
         <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client Testimonials
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            What people say about working with me
-          </p>
+          <SectionWrapper>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Client Testimonials
+            </h2>
+          </SectionWrapper>
+          <SectionWrapper delay={0.1}>
+            <p className="text-xl text-muted-foreground">
+              What people say about working with me
+            </p>
+          </SectionWrapper>
         </div>
 
-        <AnimatedTestimonials
-          testimonials={formattedTestimonials}
-          autoplay={true}
-        />
-      </div>
+        <SectionWrapper delay={0.2}>
+          <AnimatedTestimonials
+            testimonials={formattedTestimonials}
+            autoplay={true}
+          />
+        </SectionWrapper>
+      </SectionWrapper>
     </section>
   );
 };

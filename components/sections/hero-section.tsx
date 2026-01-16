@@ -5,6 +5,7 @@ import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
 import { LayoutTextFlip } from "../ui/layout-text-flip";
 import { urlFor } from "@/sanity/lib/image";
 import { ProfileImage } from "../profile-image";
+import { SectionWrapper } from "../ui/section-wrapper";
 
 
 
@@ -45,7 +46,7 @@ const HeroSection = async () => {
       <div className="relative z-10 container mx-auto max-w-6xl">
         <div className="@container">
           <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-8 @lg:gap-12 items-center">
-            <div className="@container/hero space-y-4 @md/hero:space-y-6">
+            <SectionWrapper direction="right" className="@container/hero space-y-4 @md/hero:space-y-6">
               <h1 className="text-4xl @md/hero:text-5xl @lg/hero:text-7xl font-bold tracking-tight">
                 {profile.firstName}{" "}
                 <span className="text-primary">{profile.lastName}</span>
@@ -103,7 +104,7 @@ const HeroSection = async () => {
                   href="/CB.SC.U4CSE23642.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 @md/hero:px-6 @md/hero:py-3 rounded-lg border hover:bg-accent transition-colors text-sm @md/hero:text-base bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="px-4 py-2 @md/hero:px-6 @md/hero:py-3 rounded-lg border transition-colors text-sm @md/hero:text-base bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   Resume
                 </Link>
@@ -129,18 +130,20 @@ const HeroSection = async () => {
                   </div>
                 )}
               </div>
-            </div>
+            </SectionWrapper>
 
-            {profile.profileImage && (
-              <ProfileImage
-                imageUrl={urlFor(profile.profileImage)
-                  .width(600)
-                  .height(600)
-                  .url()}
-                firstName={profile.firstName || ""}
-                lastName={profile.lastName || ""}
-              />
-            )}
+            <SectionWrapper direction="left" delay={0.2}>
+              {profile.profileImage && (
+                <ProfileImage
+                  imageUrl={urlFor(profile.profileImage)
+                    .width(600)
+                    .height(600)
+                    .url()}
+                  firstName={profile.firstName || ""}
+                  lastName={profile.lastName || ""}
+                />
+              )}
+            </SectionWrapper>
           </div>
         </div>
       </div>

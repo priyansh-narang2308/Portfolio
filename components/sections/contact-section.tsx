@@ -3,6 +3,7 @@ import Link from "next/link";
 import { defineQuery } from "groq";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ContactForm } from "../contact-form";
+import { SectionWrapper } from "../ui/section-wrapper";
 
 const PROFILE_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   email,
@@ -20,20 +21,24 @@ const ContactSection = async () => {
 
   return (
     <section id="contact" className="py-20 px-6 bg-muted/20">
-      <div className="container mx-auto">
+      <SectionWrapper className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Get In Touch
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Whether you have a project in mind or just want to say hi, my inbox
-            is always open.
-          </p>
+          <SectionWrapper>
+            <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+          </SectionWrapper>
+          <SectionWrapper delay={0.1}>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Whether you have a project in mind or just want to say hi, my inbox
+              is always open.
+            </p>
+          </SectionWrapper>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Globe and Info */}
-          <div className="space-y-12">
+          <SectionWrapper direction="right" className="space-y-12">
             <div className="hidden lg:block relative group">
               <div className="absolute -inset-4 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-500" />
               <Globe className="w-full aspect-square max-w-[500px] mx-auto relative z-10" />
@@ -144,17 +149,17 @@ const ContactSection = async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </SectionWrapper>
 
 
-          <div className="relative">
-            <div className="absolute -inset-4 bg-primary/5 rounded-[2rem] blur-3xl" />
+          <SectionWrapper direction="left" delay={0.2} className="relative">
+            <div className="absolute -inset-4 bg-primary/5 rounded-4xl blur-3xl" />
             <div className="relative z-10">
               <ContactForm />
             </div>
-          </div>
+          </SectionWrapper>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   );
 };
