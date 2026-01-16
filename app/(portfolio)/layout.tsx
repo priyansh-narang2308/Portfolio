@@ -34,9 +34,9 @@ export default async function RootLayout({
 
   return (
     <ClerkProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <html lang="en" suppressHydrationWarning>
-          <body className={atkins.className} suppressHydrationWarning>
+      <html lang="en" suppressHydrationWarning>
+        <body className={atkins.className} suppressHydrationWarning>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Script
               src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
               strategy="afterInteractive"
@@ -58,9 +58,9 @@ export default async function RootLayout({
             </SidebarProvider>
 
             <SanityLive />
-          </body>
-        </html>
-      </ThemeProvider>
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
