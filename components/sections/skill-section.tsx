@@ -4,7 +4,7 @@ import SkillChart from "../skill-chart";
 import { SectionWrapper } from "../ui/section-wrapper";
 
 const SKILL_QUERY =
-  defineQuery(`*[_type=="skill"] | order(category asc, order asc){
+  defineQuery(`*[_type=="skill" && !(category in ["testing", "tools", "soft-skills", "Testing", "Tools", "Soft Skills"])] | order(category asc, order asc){
     name,
     category,
     proficiency,
@@ -14,7 +14,11 @@ const SKILL_QUERY =
   }`);
 
 const SkillSection = async () => {
-  const { data: skills } = await sanityFetch({ query: SKILL_QUERY });
+  const { data: skills } = await sanityFetch({ 
+    query: SKILL_QUERY,
+    // @ts-ignore
+    revalidate: 0
+  });
 
   if (!skills || skills.length === 0) {
     return null;
