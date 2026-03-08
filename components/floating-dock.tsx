@@ -4,7 +4,7 @@ import { FloatingDockClient } from "./floating-dock-client";
 
 
 const NAVIGATION_QUERY =
-  defineQuery(`*[_type == "navigation"] | order(order asc){
+  defineQuery(`*[_type == "navigation" && !(title match "testimonial*") && !(href match "*testimonial*")] | order(order asc){
   title,
   href,
   icon,

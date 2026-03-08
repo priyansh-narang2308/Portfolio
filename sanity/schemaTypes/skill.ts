@@ -62,6 +62,12 @@ export default defineType({
       description:
         "Hex color code for the skill badge (e.g., #61DAFB for React)",
     }),
+    defineField({
+      name: "iconId",
+      title: "SkillIcon ID",
+      type: "string",
+      description: "Find the ID at https://skillicons.dev/ (e.g., 'react', 'js', 'nextjs')",
+    }),
   ],
   preview: {
     select: {
